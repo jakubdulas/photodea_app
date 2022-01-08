@@ -19,26 +19,30 @@ import Tag from "../Components/Tag";
 import PlaceCard from "../Components/PlaceCard";
 import PlaceList from "../Components/PlaceList";
 
-const Feed = () => {
-  const navigation = useNavigation();
+const Folder = ({ navigation, route }) => {
+  const [selectedFolder, setSelectedFolder] = React.useState(null);
+
+  React.useEffect(() => {
+    let { folder } = route.params;
+    setSelectedFolder(folder);
+  }, []);
   return (
     <View style={{ flex: 1, backgroundColor: colors.white }}>
-      <StatusBar barStyle="dark-content" />
-      <Header />
+      <Header
+        search={false}
+        button={{ title: "Edytuj folder" }}
+        title={selectedFolder?.name}
+        logo={false}
+      />
 
       <ScrollView
         style={{ paddingHorizontal: 20 }}
         showsVerticalScrollIndicator={false}
       >
-        <PlaceList
-          places={places}
-          style={{ marginTop: 10, marginBottom: 120 }}
-        />
+        <PlaceList style={{ marginTop: 20 }} places={selectedFolder?.places} />
       </ScrollView>
     </View>
   );
 };
 
-export default Feed;
-
-// const styles = StyleSheet({});
+export default Folder;

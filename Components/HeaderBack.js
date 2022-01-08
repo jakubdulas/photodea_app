@@ -3,17 +3,24 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "react-native-vector-icons";
 
-const HeaderBack = () => {
+const HeaderBack = ({ color = "#ffffff" }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={{
+        width: 40,
+        height: 40,
+        borderRadius: 10,
+        backgroundColor: color == "#ffffff" ? "rgba(0,0,0, 0.3)" : "#ffffff",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
       onPress={() => navigation.goBack()}
       activeOpacity={0.8}
     >
       <MaterialIcons
-        style={{ marginLeft: 10 }}
-        color="#ffffff"
+        style={{ marginLeft: color == "#ffffff" ? 10 : 0 }}
+        color={color}
         name="arrow-back-ios"
         size={30}
       />
@@ -22,14 +29,3 @@ const HeaderBack = () => {
 };
 
 export default HeaderBack;
-
-const styles = StyleSheet.create({
-  container: {
-    width: 40,
-    height: 40,
-    borderRadius: 10,
-    backgroundColor: "rgba(0,0,0, 0.3)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

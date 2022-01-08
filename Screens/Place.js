@@ -13,6 +13,8 @@ import dummy_data from "../assets/data/dummy_data";
 import fonts from "../assets/fonts";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Feather, Ionicons } from "react-native-vector-icons";
+import Tag from "../Components/Tag";
+import HeaderBack from "../Components/HeaderBack";
 
 const HEADER_HEIGHT = 350;
 
@@ -207,7 +209,119 @@ const Place = ({ route }) => {
             </TouchableOpacity>
           )}
         />
+        <View
+          style={{
+            paddingHorizontal: 20,
+            marginTop: 40,
+            marginBottom: 60,
+          }}
+        >
+          <Text style={{ fontSize: 20 }}>Tagi</Text>
+          <View
+            style={{
+              flexWrap: "wrap",
+              flexDirection: "row",
+            }}
+          >
+            {selectedPlace?.tags.map((item, index) => (
+              <>
+                <Tag
+                  key={index}
+                  item={item}
+                  style={{ marginRight: 10, marginTop: 10 }}
+                />
+              </>
+            ))}
+          </View>
+        </View>
       </Animated.ScrollView>
+
+      {/* Header bar */}
+      <View
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 90,
+          flexDirection: "row",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          paddingHorizontal: 20,
+          paddingBottom: 10,
+        }}
+      >
+        {/* Screen Overlay */}
+        <Animated.View
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "#ffffff",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 1,
+            },
+            shadowOpacity: 0.22,
+            shadowRadius: 2.22,
+
+            elevation: 3,
+            opacity: scrollY.interpolate({
+              inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 70],
+              outputRange: [0, 1],
+            }),
+          }}
+        />
+        {/* Header Bar Title */}
+        <Animated.View
+          style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            justifyContent: "flex-end",
+            alignItems: "center",
+            paddingBottom: 20,
+            opacity: scrollY.interpolate({
+              inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 50],
+              outputRange: [0, 1],
+            }),
+            transform: [
+              {
+                translateY: scrollY.interpolate({
+                  inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 50],
+                  outputRange: [50, 0],
+                  extrapolate: "clamp",
+                }),
+              },
+            ],
+          }}
+        >
+          <Text style={{ color: "#000000" }}>{selectedPlace?.name}</Text>
+        </Animated.View>
+
+        <HeaderBack
+          style={{
+            opacity: scrollY.interpolate({
+              inputRange: [HEADER_HEIGHT - 100, HEADER_HEIGHT - 50],
+              outputRange: [1, 0],
+            }),
+          }}
+        />
+
+        <TouchableOpacity
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            width: 35,
+            height: 35,
+          }}
+        ></TouchableOpacity>
+      </View>
     </View>
   );
 };
