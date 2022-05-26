@@ -27,8 +27,23 @@ const TagDetails = ({ navigation, route }) => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.white }}>
-      <ScrollView style={{ paddingHorizontal: 20, paddingTop: 40 }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: colors.white,
+        alignItems: "center",
+        paddingTop: 10,
+      }}
+    >
+      <View
+        style={{
+          width: 100,
+          height: 4,
+          backgroundColor: "#dddddd",
+          borderRadius: 100,
+        }}
+      ></View>
+      <ScrollView style={{ paddingHorizontal: 20, paddingTop: 30 }}>
         {/* Tag header */}
         <View style={{ flexDirection: "row" }}>
           <View style={{ marginRight: 20 }}>

@@ -9,7 +9,6 @@ import {
   FlatList,
 } from "react-native";
 import colors from "../assets/colors";
-import dummy_data from "../assets/data/dummy_data";
 import fonts from "../assets/fonts";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Feather, Ionicons } from "react-native-vector-icons";
@@ -18,53 +17,50 @@ import HeaderBack from "../Components/HeaderBack";
 
 const HEADER_HEIGHT = 350;
 
-const actionIcons = [
-  {
-    title: "Like",
-    onClick: () => {
-      Alert.alert("Like place", "Are you sure you want to like this place?");
-    },
-    icon: () => <AntDesign color="#000000" name="hearto" size={23} />,
-  },
-  {
-    title: "Add to folder",
-    onClick: () => {
-      Alert.alert(
-        "Add the place to folder",
-        "Are you sure you want to add the place to folder?"
-      );
-    },
-    icon: () => <Feather color="#000000" name="plus" size={30} />,
-  },
-  {
-    title: "Navigate",
-    onClick: () => {
-      Alert.alert("Navigate", "To do");
-    },
-    icon: () => <Feather color="#000000" name="navigation" size={23} />,
-  },
-  {
-    title: "Instagram post",
-    onClick: () => {
-      Alert.alert("Instagram post", "You will be moved to Instagram soon");
-    },
-    icon: () => <AntDesign color="#000000" name="instagram" size={25} />,
-  },
-  {
-    title: "Share",
-    onClick: () => {
-      Alert.alert("Share place", "Show this place your friends");
-    },
-    icon: () => (
-      <Ionicons color="#000000" name="share-social-outline" size={23} />
-    ),
-  },
-];
-
 const Place = ({ route }) => {
   const [selectedPlace, setSelectedPlace] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
   const navigation = useNavigation();
+
+  const actionIcons = [
+    {
+      title: "Like",
+      onClick: () => {
+        Alert.alert("Like place", "Are you sure you want to like this place?");
+      },
+      icon: () => <AntDesign color="#000000" name="hearto" size={23} />,
+    },
+    {
+      title: "Add to folder",
+      onClick: () => {
+        navigation.navigate("AddToFolder", { place_id: selectedPlace?.id });
+      },
+      icon: () => <Feather color="#000000" name="plus" size={30} />,
+    },
+    {
+      title: "Navigate",
+      onClick: () => {
+        Alert.alert("Navigate", "To do");
+      },
+      icon: () => <Feather color="#000000" name="navigation" size={23} />,
+    },
+    {
+      title: "Instagram post",
+      onClick: () => {
+        Alert.alert("Instagram post", "You will be moved to Instagram soon");
+      },
+      icon: () => <AntDesign color="#000000" name="instagram" size={25} />,
+    },
+    {
+      title: "Share",
+      onClick: () => {
+        Alert.alert("Share place", "Show this place your friends");
+      },
+      icon: () => (
+        <Ionicons color="#000000" name="share-social-outline" size={23} />
+      ),
+    },
+  ];
 
   React.useEffect(() => {
     let { place } = route.params;

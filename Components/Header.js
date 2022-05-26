@@ -48,7 +48,7 @@ const Header = ({
         justifyContent: "center",
       }}
     >
-      <View style={{ paddingBottom: 20, width: "100%", paddingHorizontal: 20 }}>
+      <View style={{ paddingBottom: 10, width: "100%", paddingHorizontal: 20 }}>
         <View
           style={{
             justifyContent: "space-between",
@@ -68,7 +68,10 @@ const Header = ({
                   style={{ width: 42, height: 40, resizeMode: "cover" }}
                 />
               </TouchableOpacity>
-              <TouchableOpacity activeOpacity={0.8}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate("Profile")}
+              >
                 <Image
                   source={require("../assets/images/profilowe.png")}
                   style={{ width: 34, height: 34, borderRadius: 19 }}
@@ -88,15 +91,19 @@ const Header = ({
             alignItems: "center",
           }}
         >
-          <Text
-            style={{
-              paddingTop: 7,
-              fontWeight: "500",
-              fontSize: headerTitleSize,
-            }}
-          >
-            {title}
-          </Text>
+          {title ? (
+            <Text
+              style={{
+                paddingTop: 7,
+                fontWeight: "500",
+                fontSize: headerTitleSize,
+              }}
+            >
+              {title}
+            </Text>
+          ) : (
+            <></>
+          )}
           {button && (
             <TouchableOpacity onPress={button.onPress}>
               <View

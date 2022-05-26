@@ -18,6 +18,9 @@ import {
 import colors from "./assets/colors";
 import AllTags from "./Screens/AllTags";
 import Folder from "./Screens/Folder";
+import AddToFolder from "./Screens/AddToFolder";
+import Search from "./Screens/Search";
+import Profile from "./Screens/Profile";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -66,6 +69,15 @@ const renderTabItem = (iconName, focused) => {
       icon = (
         <MaterialCommunityIcons
           name="map-marker-multiple-outline"
+          size={30}
+          color={focused ? colors.tabActive : colors.tabInactive}
+        />
+      );
+      break;
+    case "search":
+      icon = (
+        <AntDesign
+          name="search1"
           size={30}
           color={focused ? colors.tabActive : colors.tabInactive}
         />
@@ -130,6 +142,13 @@ const Main = () => {
           tabBarIcon: ({ focused }) => renderTabItem("folders", focused),
         }}
       />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarIcon: ({ focused }) => renderTabItem("search", focused),
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -151,12 +170,21 @@ export default function App() {
             // })}
           />
           <Stack.Screen name="Folder" component={Folder} />
+          <Stack.Screen name="Profile" component={Profile} />
         </Stack.Group>
         <Stack.Group
-          screenOptions={{ presentation: "modal", headerShown: false }}
+          screenOptions={{
+            presentation: "modal",
+            headerShown: false,
+          }}
         >
           <Stack.Screen name="TagDetails" component={TagDetails} />
           <Stack.Screen name="AllTags" component={AllTags} />
+          <Stack.Screen
+            name="AddToFolder"
+            theme={{ colors: { background: "#000000" } }}
+            component={AddToFolder}
+          />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

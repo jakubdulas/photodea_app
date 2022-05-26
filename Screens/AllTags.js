@@ -15,6 +15,17 @@ const AllTags = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.white }}>
+      <View style={{ width: "100%", alignItems: "center", paddingTop: 10 }}>
+        <View
+          style={{
+            width: 100,
+            height: 4,
+            backgroundColor: "#dddddd",
+            borderRadius: 100,
+          }}
+        ></View>
+      </View>
+
       <View style={{ paddingHorizontal: 20, paddingTop: 30 }}>
         <Text style={{ fontSize: 30, fontWeight: "500" }}>Wszystkei tagi</Text>
         <TextInput
@@ -23,9 +34,8 @@ const AllTags = () => {
             borderRadius: 10,
             backgroundColor: colors.searchGray,
             height: 40,
-            padding: 20,
-            marginTop: 20,
-            fontSize: 15,
+            padding: 10,
+            marginTop: 10,
           }}
           placeholder={"Szukaj"}
           placeholderTextColor={colors.searchPlaceholder}

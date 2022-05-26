@@ -1,5 +1,6 @@
 export const places = [
   {
+    id: 1,
     images: [
       require("./place1.jpg"),
       require("./place1.jpg"),
@@ -21,6 +22,7 @@ export const places = [
     ],
   },
   {
+    id: 2,
     images: [require("./place2.jpg"), require("./place1.jpg")],
     name: "Fajniusia nazwa miejsca",
     description:
@@ -38,6 +40,7 @@ export const places = [
     ],
   },
   {
+    id: 3,
     images: [require("./place3.jpg")],
     name: "Fajniusia nazwa miejsca",
     description:
@@ -55,6 +58,7 @@ export const places = [
     ],
   },
   {
+    id: 4,
     images: [require("./place4.jpg")],
     name: "Fajniusia nazwa miejsca",
     description:
@@ -131,14 +135,17 @@ export const top_users = [
 
 export const folders = [
   {
+    id: 1,
     name: "Do odwiedzenia",
     places: places,
   },
   {
+    id: 2,
     name: "Ulubione",
     places: places,
   },
   {
+    id: 3,
     name: "Odwiedzone",
     places: places,
   },

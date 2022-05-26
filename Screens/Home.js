@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <View style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar barStyle="dark-content" />
-      <Header />
+      <Header search={false} />
 
       <ScrollView
         style={{ paddingLeft: 20 }}

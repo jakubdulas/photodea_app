@@ -24,7 +24,7 @@ const Feed = () => {
   return (
     <View style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar barStyle="dark-content" />
-      <Header />
+      <Header search={false} title="" />
 
       <ScrollView
         style={{ paddingHorizontal: 20 }}
