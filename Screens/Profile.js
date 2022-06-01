@@ -32,7 +32,11 @@ const Profile = () => {
               <Ionicons name="chevron-back-outline" size={30} color="#ffffff" />
             </TouchableOpacity>
             <Text style={{ color: "#ffffff" }}>@jakubdulas</Text>
-            <Ionicons name="ios-menu-outline" size={30} color="#ffffff" />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("ProfilePopup")}
+            >
+              <Ionicons name="ios-menu-outline" size={30} color="#ffffff" />
+            </TouchableOpacity>
           </View>
           <View style={{ marginTop: 10 }}>
             <Image

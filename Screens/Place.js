@@ -138,17 +138,17 @@ const Place = ({ route }) => {
             <Text style={{ ...fonts.h1, width: "70%" }}>
               {selectedPlace?.name}
             </Text>
-            {/* <TouchableOpacity onPress={()=> navigation.navigate('')}> */}
-            <Image
-              source={selectedPlace?.user?.image}
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: 20,
-                resizeMode: "cover",
-              }}
-            />
-            {/* </TouchableOpacity> */}
+            <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+              <Image
+                source={selectedPlace?.user?.image}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                  resizeMode: "cover",
+                }}
+              />
+            </TouchableOpacity>
           </View>
           <View style={{ flexDirection: "row", marginTop: 20 }}>
             <FlatList

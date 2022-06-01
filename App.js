@@ -9,6 +9,8 @@ import AddPlace from "./Screens/AddPlace";
 import Folders from "./Screens/Folders";
 import Place from "./Screens/Place";
 import TagDetails from "./Screens/TagDetails";
+import DeactivateAccount from "./Screens/DeactivateAccount";
+import Settings from "./Screens/Settings";
 import {
   Feather,
   AntDesign,
@@ -21,6 +23,8 @@ import Folder from "./Screens/Folder";
 import AddToFolder from "./Screens/AddToFolder";
 import Search from "./Screens/Search";
 import Profile from "./Screens/Profile";
+import Popup from "./Components/Popup";
+import ChangePassword from "./Screens/ChangePassword";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -171,6 +175,12 @@ export default function App() {
           />
           <Stack.Screen name="Folder" component={Folder} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Settings" component={Settings} />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
+          <Stack.Screen
+            name="DeactivateAccount"
+            component={DeactivateAccount}
+          />
         </Stack.Group>
         <Stack.Group
           screenOptions={{
@@ -185,6 +195,16 @@ export default function App() {
             theme={{ colors: { background: "#000000" } }}
             component={AddToFolder}
           />
+        </Stack.Group>
+        <Stack.Group
+          screenOptions={{
+            presentation: "modal",
+            contentStyle: { backgroundColor: "#40404000" },
+
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="ProfilePopup" component={Popup} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
