@@ -12,6 +12,7 @@ const colors = {
   searchPlaceholder: "#7A7A7A",
   tabActive: "#000000",
   tabInactive: "#707070",
+  red: "#ff0000",
 };
 
 export default colors;

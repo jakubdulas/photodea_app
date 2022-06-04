@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import PlaceCard from "./PlaceCard";
 
-const PlaceList = ({ places, modal = false, style = {} }) => {
+const PlaceList = ({ places, modal = false, style = {}, deleteFromFolder }) => {
   return (
     <View
       style={{
@@ -17,6 +17,7 @@ const PlaceList = ({ places, modal = false, style = {} }) => {
           <PlaceCard
             item={item}
             modal={modal}
+            deleteFromFolder={deleteFromFolder}
             style={{
               marginBottom: 10,
               marginTop: index % 2 == 0 ? 0 : 20,

@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { folders, places } from "../assets/images/dummy/dummy_data";
 import { Feather } from "react-native-vector-icons";
+import CreateFolder from "../Components/CreateFolder";
 
 const AddToFolder = ({ place_id }) => {
   const navigation = useNavigation();
   const place = places.find((item) => (item.id = place_id));
-  console.log(place_id);
+  const [createFolderOpened, setCreateFolderOpened] = React.useState(false);
 
   const [folderList, setFolders] = useState(folders);
 
@@ -17,6 +18,10 @@ const AddToFolder = ({ place_id }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#ffffff" }}>
+      <CreateFolder
+        createFolderOpened={createFolderOpened}
+        setCreateFolderOpened={setCreateFolderOpened}
+      />
       <View style={{ margin: 20 }}>
         <View
           style={{
@@ -47,6 +52,7 @@ const AddToFolder = ({ place_id }) => {
                 borderWidth: 1,
                 borderRadius: 10,
               }}
+              onPress={() => setCreateFolderOpened(true)}
             >
               <Text style={{ color: "#0d72ff" }}>Utwórz folder</Text>
             </TouchableOpacity>

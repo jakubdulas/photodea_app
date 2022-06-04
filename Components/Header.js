@@ -21,7 +21,7 @@ const Header = ({
   button = null,
   logo = true,
 }) => {
-  const [headerTitleSize, setheaderTitleSize] = React.useState(0);
+  const [headerTitleSize, setheaderTitleSize] = React.useState(20);
   const navigation = useNavigation();
 
   React.useEffect(() => {

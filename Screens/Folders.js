@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Button,
   Image,
+  Modal,
   ScrollView,
   TouchableOpacity,
   FlatList,
@@ -22,10 +23,12 @@ import {
 } from "../assets/images/dummy/dummy_data";
 import Tag from "../Components/Tag";
 import PlaceCard from "../Components/PlaceCard";
+import CreateFolder from "../Components/CreateFolder";
 
 const Folders = () => {
   const navigation = useNavigation();
   const [usersFolders, setUsersFolders] = React.useState(null);
+  const [createFolderOpened, setCreateFolderOpened] = React.useState(false);
 
   React.useEffect(() => {
     setUsersFolders(folders);
@@ -33,8 +36,18 @@ const Folders = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.white }}>
-      <Header button={{ title: "Stwórz folder" }} title="Foldery" />
+      <Header
+        button={{
+          title: "Stwórz folder",
+          onPress: () => setCreateFolderOpened(true),
+        }}
+        title="Foldery"
+      />
 
+      <CreateFolder
+        createFolderOpened={createFolderOpened}
+        setCreateFolderOpened={setCreateFolderOpened}
+      />
       <ScrollView
         style={{ paddingHorizontal: 20 }}
         showsVerticalScrollIndicator={false}
